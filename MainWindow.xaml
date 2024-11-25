@@ -1,0 +1,266 @@
+﻿<Window x:Class="WpfApp1.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp1"
+        mc:Ignorable="d"
+        Title="Paint" Height="650" Width="1200" ResizeMode="NoResize">
+    <Window.Resources>
+        <Style TargetType="Border">
+            <Setter Property="Background" Value="#1e1e1e" />
+            <Setter Property="BorderBrush" Value="#1e1e1e" />
+            <Setter Property="BorderThickness" Value="1" />
+        </Style>
+    </Window.Resources>
+    <Grid Background="#1e1e1e" Grid.Column="0">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="15*"></ColumnDefinition>
+            <ColumnDefinition Width="85*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <StackPanel Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Top" Height="20" Width="1020" Panel.ZIndex="9999">
+            <Menu Background="#333" Foreground="White" Margin="15,0">
+                <MenuItem Header="Plik">
+                    <MenuItem Header="Nowy" Background="#333" Foreground="White" Click="Nowy_Click" BorderBrush="#1e1e1e"/>
+                    <MenuItem Header="Zapisz jako" Click="ZapiszJako_Click" Background="#333" Foreground="White" BorderBrush="#1e1e1e"/>
+                    <MenuItem Header="Zakończ" Click="Zakoncz_Click" Background="#333" Foreground="White" BorderBrush="#1e1e1e"/>
+                </MenuItem>
+                <MenuItem Header="Widok">
+                    <MenuItem Header="Pełny ekran" Click="pelen_ekran" Background="#333"  Foreground="White" BorderBrush="#1e1e1e"/>
+                    <MenuItem Header="Zmniejsz" Click="zmniejsz_ekran"  Background="#333" Foreground="White" BorderBrush="#1e1e1e"/>
+                    <MenuItem Header="Zminimalizuj" Click="minimalizuj_ekran"  Background="#333" Foreground="White" BorderBrush="#1e1e1e"/>
+                </MenuItem>
+            </Menu>
+        </StackPanel>
+        <Canvas Grid.Column="1" Background="White" x:Name="paintcanvas"  HorizontalAlignment="Left" Height="622" Margin="15,0,0,0" VerticalAlignment="Top" Width="1000"  MouseLeftButtonDown="paintcanvas_MouseLeftButtonDown" MouseLeftButtonUp="paintcanvas_MouseLeftButtonUp" Cursor="Pen" MouseMove="Canvas_MouseMove"/>
+        <TextBlock Foreground="White" FontSize="24" Margin="10,48,100,524" >Kolory</TextBlock>
+        <StackPanel  Orientation="Horizontal" HorizontalAlignment="Left" Height="20" Margin="2,100,0,0" VerticalAlignment="Top" Width="189" Grid.ColumnSpan="2" >
+            <Button x:Name="Black" Click="Apply_Color" Background="Black" Height="15" Width="15" Margin="2,2,2,2">
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="25">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+            <Button x:Name="DarkGray" Click="Apply_Color" Background="DarkGray" Height="15" Width="15" Margin="2,2,2,2" >
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="25">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+            <Button x:Name="DarkRed" Click="Apply_Color" Background="DarkRed" Height="15" Width="15" Margin="2,2,2,2" >
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="25">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+            <Button x:Name="Red" Click="Apply_Color" Background="Red" Height="15" Width="15" Margin="2,2,2,2" >
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="25">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+            <Button x:Name="Orange" Click="Apply_Color" Background="Orange" Height="15" Width="15" Margin="2,2,2,2">
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="25">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+            <Button x:Name="Yellow" Click="Apply_Color" Background="Yellow" Height="15" Width="15" Margin="2,2,2,2" >
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="25">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+            <Button x:Name="Green" Click="Apply_Color" Background="Green" Height="15" Width="15" Margin="2,2,2,2" >
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="25">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+            <Button x:Name="Blue" Click="Apply_Color" Background="Blue" Height="15" Width="15" Margin="2,2,2,2" >
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="25">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+            <Button x:Name="DarkBlue" Click="Apply_Color" Background="DarkBlue" Height="15" Width="15" Margin="2,2,2,2" >
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="25">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+            <Button x:Name="Purple" Click="Apply_Color" Background="Purple" Height="15" Width="15" Margin="2,2,2,2" >
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="25">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+        </StackPanel>
+        <StackPanel  Orientation="Horizontal" HorizontalAlignment="Left" Height="20" Margin="2,120,0,0" VerticalAlignment="Top" Width="189" Grid.ColumnSpan="2" >
+            <Button x:Name="Custom1" Click="Apply_Color" Background="White" Height="15" Width="15" Margin="2,2,2,2">
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="25">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+            <Button x:Name="Custom2" Click="Apply_Color" Background="White" Height="15" Width="15" Margin="2,2,2,2" >
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="25">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+            <Button x:Name="Custom3" Click="Apply_Color" Background="White" Height="15" Width="15" Margin="2,2,2,2" >
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="25">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+            <Button x:Name="Custom4" Click="Apply_Color" Background="White" Height="15" Width="15" Margin="2,2,2,2" >
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="25">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+            <Button x:Name="Custom5" Click="Apply_Color" Background="White" Height="15" Width="15" Margin="2,2,2,2">
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="25">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+            <Button x:Name="Custom6" Click="Apply_Color" Background="White" Height="15" Width="15" Margin="2,2,2,2" >
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="25">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+            <Button x:Name="Custom7" Click="Apply_Color" Background="White" Height="15" Width="15" Margin="2,2,2,2" >
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="25">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+            <Button x:Name="Custom8" Click="Apply_Color" Background="White" Height="15" Width="15" Margin="2,2,2,2" >
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="25">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+            <Button x:Name="Custom9" Click="Apply_Color" Background="White" Height="15" Width="15" Margin="2,2,2,2" >
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="25">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+            <Button x:Name="Custom10" Click="Apply_Color" Background="White" Height="15" Width="15" Margin="2,2,2,2" >
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="25">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+        </StackPanel>
+        <TextBlock Foreground="White" FontSize="24" Margin="10,141,1008,444" Grid.ColumnSpan="2">Grubość</TextBlock>
+        <Slider x:Name="SizeSlider" Minimum="1" Maximum="20" Value="5" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="12,0,0,421" Width="150"/>
+        <TextBlock Foreground="White" FontSize="24" Margin="5,220,0,357">Narzędzia</TextBlock>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Height="30" Margin="10,264,0,0" VerticalAlignment="Top" Width="150">
+            <Button HorizontalAlignment="Left" Click="Active_Eraser" Height="22" Width="22" Margin="2">
+                <Image Source="ikonki/eraser.png"></Image>
+            </Button>
+            <Button Click="Active_Paintbrush" Height="22" Width="22">
+                <Image Source="ikonki/paintbrush.png"/>
+            </Button>
+            <Button Click="AddTextButton_Click" Height="22" Width="22" Margin="2">
+                <Image Source="ikonki/text.png"/>
+            </Button>
+            <Button Height="22" Width="22" Margin="2">
+                <Image Source="ikonki/fill-color.png"/>
+            </Button>
+            <Button Click="ColorPickerButton_Click"  Height="22" Width="22" Margin="2">
+                <Image Source="ikonki/pipette.png"/>
+            </Button>
+        </StackPanel>
+        <TextBlock Foreground="White" FontSize="24" Margin="5,300,0,221">Kształty</TextBlock>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Height="30" Margin="10,340,0,0" VerticalAlignment="Top" Width="142">
+            <Button Click="RectangleButton_Click" VerticalAlignment="Top" Width="22" Height="22" HorizontalAlignment="Left" Margin="2">
+                <Image Source="ikonki/square.png"></Image>
+            </Button>
+            <Button Click="EllipseButton_Click" VerticalAlignment="Top" Width="22" Height="22" HorizontalAlignment="Left" Margin="2">
+                <Image Source="ikonki/circle.png"></Image>
+            </Button>
+            <Button Click="LineButton_Click" VerticalAlignment="Top"  Width="22" Height="22" HorizontalAlignment="Left" Margin="2">
+                <Image Source="ikonki/line.png"></Image>
+            </Button>
+        </StackPanel>
+        <StackPanel>
+            <CheckBox x:Name="checkbox_wypelnienie" HorizontalAlignment="Left" Height="20" Foreground="White" Content="Wypełnienie" Margin="10,375,0,239"></CheckBox>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Height="92" Margin="20,504,0,0" VerticalAlignment="Top" Width="142">
+            <Button Click="Button_Click" Height="50" Width="50" Margin="10" HorizontalAlignment="Left">
+                <Image Source="ikonki/undo.png"></Image>
+            </Button>
+            <Button Click="Clear_Click" Height="50" Width="50" Margin="10">
+                <Image Source="ikonki/broom.png"></Image>
+            </Button>
+        </StackPanel>
+
+    </Grid>
+</Window>

@@ -1,0 +1,22 @@
+﻿<Window x:Class="Paint.CanvasSettingsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Ustawienia Płótna" Height="200" Width="300" ResizeMode="NoResize">
+    <Grid Background="#1e1e1e">
+        <StackPanel Margin="10,10,10,0">
+            <TextBlock Text="Rozmiar płótna:" Margin="20,10" FontWeight="Bold" Foreground="White" />
+            <TextBox x:Name="txtWidth" HorizontalAlignment="Left" Margin="25,5" Text="Szerokość" Width="200" Background="#333" Foreground="White"></TextBox>
+            <TextBox x:Name="txtHeight" HorizontalAlignment="Left" Margin="25,5" Text="Wysokość" Width="200" Background="#333" Foreground="White"></TextBox>
+
+            <CheckBox HorizontalAlignment="Left" Width="200" x:Name="chkTransparent" Content="Płótno przezroczyste" Margin="25,10" Foreground="White"></CheckBox>
+            <Button Content="Ok" Background="#0071e3" FontWeight="SemiBold" Foreground="White" Click="OnOkButtonClick" Width="60">
+                <Button.Resources>
+                    <Style TargetType="{x:Type Border}">
+                        <Setter Property="CornerRadius" Value="10"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
+
+        </StackPanel>
+    </Grid>
+</Window>
